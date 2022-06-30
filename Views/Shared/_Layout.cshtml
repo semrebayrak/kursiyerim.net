@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Test</title>
+    <!-- <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="~/assets/css/main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="h-24">
+      <!-- <div class="header-top text-center bg-[#0b5882]">
+        <p></p>
+      </div> -->
+      <nav class="bg-gray px-2 sm:px-4 py-3.5">
+        <div
+          class="container h-24 flex flex-wrap justify-between items-center mx-auto"
+        >
+          <a href="https://flowbite.com/" class="flex items-center">
+            <img src="/assets/images/logo.png" class="mr-3 logo" alt="Logo" />
+            <span
+              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+              >Kursiyerim.Net</span
+            >
+          </a>
+          <button
+            data-collapse-toggle="mobile-menu"
+            type="button"
+            class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <svg
+              class="hidden w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+              <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:font-medium text-xl text-black">
+                  <li class="hover:text-sky-700">
+                      @Html.ActionLink("Home", "Index", "Home")
+                  </li>
+                  <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                  <li>
+                      <a href="/trainers" class="hover:text-sky-700">
+                          @Html.ActionLink("Trainers", "Index", "Trainers")
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/profile" class="hover:text-sky-700">
+                          @if (@ViewBag.user == false)
+                          {
+                              @Html.ActionLink("Sign In", "Login", "User");
+
+                          }
+                          else
+                          {
+                              @Html.ActionLink("Profile", "Profile", "User");
+                          }
+                      </a>
+                  </li>
+                  @if (@ViewBag.user != false)
+                  {
+                      <li>
+                          <a href="/profile" class="hover:text-sky-700">
+                              @Html.ActionLink("Log Out", "Logout", "User")
+                          </a>
+
+                      </li>
+                     
+
+                  }
+
+
+              </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="">
+      <main role="main" class="pb-3">@RenderBody()</main>
+    </div>
+
+    <footer class="border-top h-96 footer text-muted bg-gray-800">
+      <div class="container">
+        &copy; 2022 - Test -
+        <a asp-area="" asp-controller="Home" asp-action="Privacy"> risvacys</a>
+      </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+  </body>
+</html>

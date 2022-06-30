@@ -1,0 +1,92 @@
+﻿@model dynamic
+  @{ ViewData["Title"] = "Home Page"; }
+
+  <section class="banner h-128 flex">
+    <div class="banner-info absolute bottom-40 w-4/12 text-center">
+      <h2 class="text-4xl text-center mb-10 text-purple-900">Random Text</h2>
+
+      <p class="pb-16">
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It
+        has roots in a piece of classical Latin literature from 45 BC, making it
+        over 2000 years old. Richard McClintock, a Latin professor at
+        Hampden-Sydney College in Virginia, looked up one of the more obscure
+        Latin words, consectetur, from a Lorem Ipsum passage, and going through
+        the cites of the word in classical literature, discovered the
+        undoubtable source. Lorem
+      </p>
+      <a href="/courses">
+        <button class="bg-blue-900 rounded-xl h-12 text-white px-5">
+          Click Here to See All Courses
+        </button>
+      </a>
+    </div>
+  </section>
+
+  <section class="my-10 px-40 flex flex-row justify-center space-x-72">
+    <img
+      class="shadow-lg rounded-3xl"
+      src="../assets/images/about-image.png"
+      alt=""
+    />
+    <div class="about-text w-5/12">
+      <h2 class="mt-10 text-4xl text-center">What is Kursiyerim.NET</h2>
+      <p>
+        This app offers every service that a typical course app offers. The application in its purest form is a web platform that can bring together trainers and users. Users can purchase courses published by instructors according to their budget and needs. These courses may sometimes be unfinished courses in their entirety. Even if the user has completely purchased the course, he can upload updates and new videos to the trainer videos. Users have the right to ask questions to the trainers. Instructors can grant questions in proportion to the fees of the courses. Instructors can also share images, questions and information specific to users on the course pages.
+      </p>
+    </div>
+  </section>
+
+  <section id="courses" class="bg-gray-50">
+    <h2 class="text-4xl text-center mt-40">Courses</h2>
+    <ul class="grid-row">
+    
+       @for(int i = 0; i<3; i++){
+        var item = Model.courseList[i];
+        <li>
+        <a href=@{@item.name.Replace(" ","-")} class="card">
+          <img
+            src=@{@item.coverPhoto}
+            class="card__image"
+            alt=""
+          />
+          <div class="card__overlay">
+            <div class="card__header">
+              <img
+                class="card thumb"
+                src="https://i.imgur.com/7D7I6dI.png"
+                alt=""
+              />
+              <div class="card__header-text">
+                <h3 class="card__title">@{@item.trainer.name}</h3>
+                <span class="card__status">@{@item.trainer.profession}</span>
+              </div>
+            </div>
+            <p class="card__description">
+              @{@item.description}
+            </p>
+          </div>
+        </a>
+      </li>
+    }
+    </ul>
+  </section>
+  
+  <section id="trainers">
+    <h2 class="text-4xl text-center  mt-40">Trainers</h2>
+    <ul class="grid-row">
+      @foreach(var item in Model.trainerList){
+      <li>
+        <div class="flex flex-col items-center justify-center">
+          <div class="educator thumb mb-5">
+            <img class="" src="../assets/images/trainers/2.jpeg" alt="" />
+          </div>
+          <div class="card__header-text">
+            <h3 class="card__title">@{ @item.name }</h3>
+          </div>
+          <p>@{ @item.profession }</p>
+        </div>
+      </li>
+      }
+    </ul>
+  </section>
+</Test.Models.trainer>

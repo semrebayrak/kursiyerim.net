@@ -1,0 +1,47 @@
+@model dynamic
+  @{ ViewData["Title"] = "Courses"; }
+
+  <section id="courses" class="bg-gray-50">
+    <h2 class="mt-10 text-4xl text-center">Courses</h2>
+    <div class="dropdown">
+      <button class="dropbtn">Categories</button>
+      <div class="dropdown-content">
+      @foreach(var item in Model.categoryList){
+       @Html.ActionLink( (string) @item.name, "Index","Courses",new{ category= @item.name })
+      }
+      </div>
+    </div>
+    <ul class="grid-row my-40">
+      @foreach(var item in Model.courseList){
+      <li>
+        <a href='@Url.Action("Course", "Courses", 
+         new { courseName = item.name })' class="card">
+          <img
+            src=@{@item.coverPhoto}
+            class="card__image"
+            alt=""
+          />
+          <div class="card__overlay">
+            <div class="card__header">
+              <img
+                class="card thumb"
+                src="https://i.imgur.com/7D7I6dI.png"
+                alt=""
+              />
+              <div class="card__header-text">
+                <h3 class="card__title">@{@item.trainer.name}</h3>
+                <span class="card__status">@{@item.trainer.profession}</span>
+              </div>
+            </div>
+            <p class="card__description">
+              @{@item.description}
+            </p>
+          </div>
+        </a>
+      </li>
+    }
+    </ul>
+  </section>
+
+
+</Test.Models.trainer>
